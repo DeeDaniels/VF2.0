@@ -4,7 +4,8 @@ import YouTube from "react-youtube";
 import Slider from "rc-slider";
 import "../node_modules/rc-slider/assets/index.css";
 import axios from "axios";
-
+import "./VidPanel.css";
+//import VidService from './VidService';
 
 // import { youtubeParse } from "../../util/videoUtils";
 
@@ -13,11 +14,24 @@ const Range = createSliderWithTooltip(Slider.Range);
 
 const MainContainer = styled.div`
   text-align: center;
+  border: 2px solid white;
+  width: 80%;
+  margin: 0 auto;
 `;
 
-const FormContainer = styled.div``;
+const FormContainer = styled.div`
 
-const UrlForm = styled.input``;
+`;
+
+const UrlForm = styled.input`
+display: flex;
+flex-direction: row;
+justify-content: center;
+width: 50%;
+margin: 0 auto;
+
+`;
+
 
 const TimeInputContainer = styled.div`
   display: flex;
@@ -38,6 +52,9 @@ class VideoPanel extends Component {
     this.endMin = React.createRef();
     this.endSec = React.createRef();
     this.urlInput = React.createRef();
+    //this.addVidService = new VidService();
+
+    this.handleSubmit = this.handleSubmit.bind( this );
   }
   state = {
     url: "",
@@ -159,33 +176,30 @@ class VideoPanel extends Component {
       });
     }
   };
-  componentDidMount() {
-     this.callApi()
-
-  }
-  callApi() {
-    console.log('called!')
-    let reel = {
-      url: "",
-      inputStartMin: 0,
-      inputStartSec: 0,
-      inputEndMin: 0,
-      inputEndSec: 0
-    };
-    axios.post('/projects',{ reel})
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-}
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log('clicked!!')
+    this.callApi(this.state);
   };
 
+  //THIS IS THE FUNCTION WHERE I CALL THE MONGO DB API
+  callApi(myState) {
+    console.log('called!')
+    let reel = {
+      url: this.state.url,
+      inputStartMin: this.state.inputStartMin,
+      inputStartSec: this.state.inputStartSec,
+      inputEndMin: this.state.inputEndMin,
+      inputEndSec: this.state.inputEndSec
+    };
+
+  axios({
+    method: 'POST',
+    url: '/Vids/add/post',
+    data: {reel}
+  });
+
+}
 
   render() {
     const {
@@ -196,6 +210,7 @@ class VideoPanel extends Component {
       inputStartSec,
       inputEndSec
     } = this.state;
+
 
     return (
       <MainContainer>
@@ -214,6 +229,7 @@ class VideoPanel extends Component {
         />
 
         {videoDuration === 0 ? null : this.renderSlider(videoDuration)}
+        <form onSubmit={this.handleSubmit}>
         <FormContainer>
           <TimeInputContainer>
             <StartTimeContainer>
@@ -249,9 +265,11 @@ class VideoPanel extends Component {
               />
             </EndTimeContainer>
           </TimeInputContainer>
-          <button type="submit" id="submitButton" onSubmit={this.onSubmit} value="Submit">Submit</button>
+          <button type="submit" id="submitButton" value="Submit">Submit</button>
         </FormContainer>
+        </form>
       </MainContainer>
+
     );
   }
 }

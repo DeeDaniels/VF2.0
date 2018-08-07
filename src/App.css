@@ -1,28 +1,47 @@
-.App {
+.mainContainer {
   text-align: center;
+  background-color: black;
+  color: white;
+  height: 1000px;
+  width: 100%;
+  padding-top: 150px;
+}
+.mainContainer h2{
+  font-family: 'Passero One', cursive;
+  font-size: 3em;
+}
+.mainContainer h4{
+  font-family: 'Rationale', sans-serif;
+  font-size: 1em;
 }
 
+
+/* font-family: 'Passero One', cursive;
+font-family: 'Rationale', sans-serif;
+font-family: 'Basic', sans-serif; */
+/*
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
-}
+} */
 
-.App-header {
+/* .App-header {
   background-color: #222;
   height: 150px;
   padding: 20px;
   color: white;
-}
+} */
 
-.App-title {
+/* .App-title {
   font-size: 1.5em;
 }
 
 .App-intro {
   font-size: large;
-}
+} */
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+@import url('https://fonts.googleapis.com/css?family=Basic|Passero+One|Rationale');
