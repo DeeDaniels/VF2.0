@@ -25,8 +25,12 @@ class PresentationPanel extends Component{
   //   let playerState = e.data;
   // }
   handleVideoEnd (e){
-    console.log('VIDEO END EVENT');
-    if (this.state.vidCounter < this.state.videos.length){
+
+    if ( e.target.getCurrentTime() < this.state.activeVid.endSec ) {
+      return false;
+    }
+
+    if (this.state.vidCounter < this.state.videos.length - 1){
       let count = this.state.vidCounter + 1;
       let nextVid = this.state.videos[count]
       this.setState({
