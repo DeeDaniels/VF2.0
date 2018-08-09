@@ -17,6 +17,7 @@ const MainContainer = styled.div`
   border: 2px solid white;
   width: 80%;
   margin: 0 auto;
+  padding-top:10px;
 `;
 
 const FormContainer = styled.div`
@@ -210,11 +211,17 @@ class VideoPanel extends Component {
       inputStartSec,
       inputEndSec
     } = this.state;
-
+    var opts = {
+      playerVars: {
+        autoplay: 1,
+        autohide: 1,
+        rel:0
+      }
+    };
 
     return (
       <MainContainer>
-        <UrlForm
+        <UrlForm className="mainUrl"
           type="text"
           placeholder="Paste Link Here"
           ref={this.url}
@@ -226,6 +233,7 @@ class VideoPanel extends Component {
           onStateChange={this.handleStateChange}
           onPlay={this.updateSlider}
           onPause={this.updateSlider}
+          opts={opts}
         />
 
         {videoDuration === 0 ? null : this.renderSlider(videoDuration)}

@@ -1,20 +1,36 @@
+body{
+  background-color: black;
+}
 .mainContainer {
   text-align: center;
   background-color: black;
   color: white;
-  height: 1000px;
+  height: auto;
   width: 100%;
-  padding-top: 150px;
+  padding-top: 45px;
 }
 .mainContainer h2{
-  font-family: 'Passero One', cursive;
+  font-family: 'Rationale', sans-serif;
   font-size: 3em;
+  margin-bottom: 0px;
 }
 .mainContainer h4{
   font-family: 'Rationale', sans-serif;
   font-size: 1em;
+  margin-top: 0px;
 }
-
+img{
+  width:97%;
+  height:auto;
+}
+button{
+border-radius: 7px;
+height: 30px;
+width:80px;
+font-family: 'Basic', sans-serif;
+background-color: white;
+font-size: 19px;
+}
 
 /* font-family: 'Passero One', cursive;
 font-family: 'Rationale', sans-serif;

@@ -1,0 +1,19 @@
+button{
+border-radius: 7px;
+height: 30px;
+width:80px;
+font-family: 'Basic', sans-serif;
+background-color: lightgray;
+}
+section{
+  text-align: center;
+  border: 2px solid white;
+  width: 80%;
+  height: auto;
+  margin: 0 auto;
+  padding-bottom: 30px;
+}
+button{
+  position: relative;
+  bottom:15px;
+}

@@ -34,6 +34,7 @@ VidRouter.post( '/add/post', function (req, res) {
 
 // Defined get data(index or listing) route
 VidRouter.get('/',function (req, res) {
+  console.log('about to find vids')
   Vid.find().sort({ date: 1 }).exec( function (err, vid){
     if(err){
       console.log(err);

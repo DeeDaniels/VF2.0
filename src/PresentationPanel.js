@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import YouTube from "react-youtube";
 import axios from "axios";
-// import "./VidPanel.css";
+import "./PresentationPanel.css";
 
 
 class PresentationPanel extends Component{
@@ -33,6 +33,8 @@ class PresentationPanel extends Component{
     if (this.state.vidCounter < this.state.videos.length - 1){
       let count = this.state.vidCounter + 1;
       let nextVid = this.state.videos[count]
+      console.log(count)
+      console.log(nextVid)
       this.setState({
         activeVid: nextVid,
         vidCounter: count
@@ -49,7 +51,6 @@ class PresentationPanel extends Component{
       this.setState({
         videos: res.data,
         activeVid: res.data.length ? res.data[ 0 ] : ''
-
       });
     })
   }
@@ -57,21 +58,23 @@ class PresentationPanel extends Component{
     var opts = {
       playerVars: {
         autoplay: 1,
+        showinfo: 0,
+        autohide: 0,
         start:this.state.activeVid.startSec,
         end:this.state.activeVid.endSec
       }
     };
     return(
       <div>
-      <button onClick={this.handleLoad}>Load Videos</button>
+      <button onClick={this.handleLoad}>Load VF Stream</button>
 
-      { this.state.activeVid !== '' &&
+    <section>
         <YouTube
           videoId={this.state.activeVid.url}
           opts={opts}
           onEnd={ this.handleVideoEnd }
         />
-      }
+    </section>
 
       </div>
     )

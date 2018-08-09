@@ -1,6 +1,15 @@
 #submitButton{
   background-color: white;
   color: black;
-  bottom: 90%;
-  left: 50%;
+  bottom: 23px;
+  position: relative;
+}
+
+TimeInputContainer input{
+  width:4px;
+  color: blue;
+}
+.mainUrl{
+  position: relative;
+  bottom:.2px;
 }

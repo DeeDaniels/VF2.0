@@ -3,6 +3,7 @@ import "./App.css";
 // import YouTube from 'react-youtube';
 import VideoPanel from "./VideoPanel";
 import PresentationPanel from "./PresentationPanel";
+import vfintroguide from './img/vfintroguide.png'
 
 
 
@@ -29,9 +30,12 @@ class App extends Component {
   render() {
     return (
       <div className="mainContainer">
-      <h2>Visual Fantasy</h2>
+      <img src={vfintroguide}/>
+      <h2>Video WorkStation</h2>
       <h4>Enter Youtube links into the Video WorkStation below.</h4>
         <VideoPanel> </VideoPanel>
+        <h2>Viewing Station</h2>
+        <h4>Enjoy the visual fantasy below. Press load!</h4>
         <PresentationPanel></PresentationPanel>
       </div>
     );
